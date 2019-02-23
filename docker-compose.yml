@@ -1,0 +1,18 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+
+  # commmented this because we are not able to share the drive with docker container due to firewall. Will continue using docker-compose up --build to reflect changes in the source code    
+  #  volumes:
+   #   - /app/node_modules
+    #  - .:/app
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: ["npm", "run", "test"]
