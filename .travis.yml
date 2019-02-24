@@ -1,0 +1,11 @@
+sudo: required
+
+services:
+  - docker
+
+before-insall:
+  - docker build -t gsakhare/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run gsakhare/docker-react npm run test -- --coverage #-- --coverage added to exit after the tests are run
+  
