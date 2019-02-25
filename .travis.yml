@@ -4,7 +4,7 @@ services:
   - docker
 
 before-insall:
-  - docker build -t girishsakhare/docker-react -f Dockerfile.dev .
+  - docker build -t testcontainer -f Dockerfile.dev .
 
 script:
-  - docker run girishsakhare/docker-react npm run test -- --coverage #-- --coverage added to exit after the tests are run
+  - docker run testcontainer npm run test -- --coverage #-- --coverage added to exit after the tests are run
