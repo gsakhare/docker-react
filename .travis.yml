@@ -4,7 +4,7 @@ services:
   - docker
 
 before-insall:
-  - docker build -t testcontainer -f Dockerfile.dev .
+  - "docker build -t testcontainer -f Dockerfile.dev ."
 
 # will comment out the test run as its failing with exited with 125
 # script:
@@ -12,16 +12,16 @@ before-insall:
 
 deploy:
   provider: elasticbeanstalk #predefined can be digitalocean, azure etc
-  region: "us-east-2"
-  app: "docker-react"
-  env: "DockerReact-env"
+  region: us-east-2
+  app: docker-react
+  env: DockerReact-env
   # go to services and search s3 to get the bucket name
-  bucket_name: "elasticbeanstalk-us-east-2-387642852659"
+  bucket_name: elasticbeanstalk-us-east-2-387642852659
   # by default the folder might be empty so better use appname as bucket_path
-  bucket_path: "docker-react"
+  bucket_path: docker-react
   on:
     branch: master # this means only deploy if there is change in the master branch
     # now we need to create a user to allow travis to deploy to aws search for Iam and then create a user like docker-react-travis-ci
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: 
-    secure: "$AWS_SECRET_KEY"
+    secure: $AWS_SECRET_KEY
