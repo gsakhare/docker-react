@@ -1,14 +1,17 @@
 sudo: required
 
 services:
-  - docker
+    - docker
 
 before-insall:
-  - "docker build -t testcontainer -f Dockerfile.dev ."
+  - docker build -t testcontainer -f Dockerfile.dev .
 
 # will comment out the test run as its failing with exited with 125
 script:
- - docker run testcontainer # npm run test -- --coverage #-- --coverage added to exit after the tests are run
+ - docker run testcontainer #  npm run test -- --coverage #-- --coverage added to exit after the tests are run
+
+ before_deploy:
+  - docker build -t testcontainer .
 
 deploy:
   provider: elasticbeanstalk #predefined can be digitalocean, azure etc
