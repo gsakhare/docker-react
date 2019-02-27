@@ -12,7 +12,7 @@ RUN npm run build
 
 #Create a new container from a linux base image that has the aws-cli installed
 FROM mesosphere/aws-cli
-
+EXPOSE 80
 #Using the alias defined for the first container, copy the contents of the build folder to this container
 COPY --from=builder /app/build .
 
