@@ -7,8 +7,8 @@ before-insall:
   - "docker build -t testcontainer -f Dockerfile.dev ."
 
 # will comment out the test run as its failing with exited with 125
-# script:
-#   - docker run testcontainer npm run test -- --coverage #-- --coverage added to exit after the tests are run
+script:
+ - docker run testcontainer # npm run test -- --coverage #-- --coverage added to exit after the tests are run
 
 deploy:
   provider: elasticbeanstalk #predefined can be digitalocean, azure etc
