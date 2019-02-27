@@ -35,6 +35,6 @@ deploy:
   on:
     branch: master # this means only deploy if there is change in the master branch
     # now we need to create a user to allow travis to deploy to aws search for Iam and then create a user like docker-react-travis-ci
-  access_key_id: $AWS_ACCESS_KEY
+  access_key_id: $AWS_ACCESS_KEY_ID
   secret_access_key: 
-    secure: $AWS_SECRET_KEY 
+    secure: $AWS_SECRET_ACCESS_KEY 
